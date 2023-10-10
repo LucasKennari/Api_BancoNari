@@ -1,0 +1,21 @@
+CREATE DATABASE api_banco;
+
+
+CREATE TABLE usuarios(
+  id SERIAL PRIMARY KEY UNIQUE,
+  nome VARCHAR(100) NOT NULL,
+  email VARCHAR(100) NOT NULL UNIQUE,
+  senha text NOT NULL
+  );
+
+CREATE TABLE categorias (
+id SERIAL PRIMARY KEY UNIQUE,
+categoria text NOT NULL
+);
+
+CREATE TABLE transacoes (
+id SERIAL PRIMARY KEY UNIQUE,
+usuario_id SERIAL REFERENCES usuarios(id) NOT NULL,
+categoria_id SERIAL REFERENCES categorias(id) NOT NULL,
+valor INTEGER NOT NULL
+);
