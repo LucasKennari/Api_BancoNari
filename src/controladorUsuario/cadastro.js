@@ -1,10 +1,19 @@
 const { verificarEmailExistente,
-    cadastroEfetuado } = require('../bancoDeDados/query');
+    cadastroEfetuado,
+    verificarLoginExistente } = require('../bancoDeDados/query');
 const senhaCripto = require('./senhaCript');
 
 const cadastro = async (req, res) => {
-    const { nome, email, senha } = req.body
+    const { login, nome, email, senha } = req.body
     try {
+
+        const rowLogin = verificarLoginExistente(login)
+        const { rowCount: loginRowCount } = rowLogin
+        if (loginRowCount === 1) {
+            return res.status(400).json({ mensagem: "tente outro login." })
+        }
+
+
         const row = await verificarEmailExistente(email)
         const { rowCount: emailRowCount } = row
 
@@ -12,8 +21,10 @@ const cadastro = async (req, res) => {
             return res.status(400).json({ mensagem: "tente outro email." })
         }
 
+
         const senhaCriptografada = await senhaCripto(senha)
-        const perfil = await cadastroEfetuado(nome, email, senhaCriptografada)
+        const perfil = await cadastroEfetuado(
+            login, nome, email, senhaCriptografada)
 
 
         return res.status(201).json(perfil)
