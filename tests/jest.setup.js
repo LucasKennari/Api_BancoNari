@@ -1,5 +1,4 @@
-// import supertest from "supertest";
-// import { server } from "../src/server/server";
-
-// export const testServer = supertest(server);
-// testServer.get("/");
+const supertest = require("supertest");
+const { server } = require("../src/server/server");
+const testServer = supertest(server);
+module.exports = testServer;

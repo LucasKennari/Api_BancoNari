@@ -8,4 +8,4 @@ const server = express();
 server.use(express.json());
 server.use(rotas);
 
-module.exports = server;
+module.exports = { server };
