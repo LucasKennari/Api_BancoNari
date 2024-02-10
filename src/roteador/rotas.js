@@ -1,7 +1,6 @@
-const express = require('express')
+const express = require("express");
 
-const cadastro = require('../controladorUsuario/cadastro');
-
+const cadastro = require("../controladorUsuario/cadastro");
 
 // const { listarContas } = require('../controladores/listarContas/listarContas');
 // const { editarConta } = require('../controladores/editarConta/editarConta');
@@ -12,19 +11,16 @@ const cadastro = require('../controladorUsuario/cadastro');
 // const { consultarSaldo } = require('../controladores/consultarSaldo/saldo');
 // const { extratoBancario } = require('../controladores/extratoBancario/extratoBancario');
 
-const validarCampos = require('../intermediario/validarCampos');
-const rotas = express()
-
+const validarCampos = require("../intermediario/validarCampos");
+const rotas = express();
 
 // === intermediario === //
-
-
 
 // === rotas === //
 
 //rotas.get('/contas', checarSenha, listarContas);
 
-rotas.post('/cadastro', validarCampos, cadastro)
+rotas.post("/cadastro", validarCampos, cadastro);
 
 // rotas.put('/conta/:numeroConta/usuario', checarCampos, checarCpfEmail, editarConta)
 // rotas.delete('/contas/:numeroConta', deletarConta)
@@ -36,4 +32,4 @@ rotas.post('/cadastro', validarCampos, cadastro)
 
 // rotas.get('/contas/extrato', extratoBancario)
 
-module.exports = { rotas }
+module.exports = rotas;
