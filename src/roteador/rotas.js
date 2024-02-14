@@ -18,7 +18,7 @@ const rotas = express();
 
 // === rotas === //
 
-//rotas.get('/contas', checarSenha, listarContas);
+rotas.get("/contas", checarSenha, listarContas);
 
 rotas.post("/cadastro", validarCampos, cadastro);
 
