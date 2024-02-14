@@ -12,16 +12,23 @@ const cadastro = require("../controladorUsuario/cadastro");
 // const { extratoBancario } = require('../controladores/extratoBancario/extratoBancario');
 
 const validarCampos = require("../intermediario/validarCampos");
+const {
+     loginUsuario,
+} = require("../controladorUsuario/loginUsuario/loginUsuario");
+const {
+     perfilUsuario,
+} = require("../controladorUsuario/perfilUsuario/perfilUsuario");
 const rotas = express();
 
 // === intermediario === //
 
 // === rotas === //
 
-rotas.get("/contas", checarSenha, listarContas);
+// rotas.get("/contas", checarSenha, listarContas);
 
 rotas.post("/cadastro", validarCampos, cadastro);
-
+rotas.post("/login", loginUsuario);
+rotas.post("/perfil", perfilUsuario);
 // rotas.put('/conta/:numeroConta/usuario', checarCampos, checarCpfEmail, editarConta)
 // rotas.delete('/contas/:numeroConta', deletarConta)
 // rotas.post('/transacoes/depositar', depositarConta)

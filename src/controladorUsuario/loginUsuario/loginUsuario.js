@@ -6,8 +6,10 @@ const loginUsuario = (req, res) => {
 
      //gerar token
 
-     jwt.sign({ senha }, process.env.PRIVATEKEY);
-
+     const token = jwt.sign({ senha }, process.env.PRIVATEKEY, {
+          expiresIn: "48h",
+     });
+     res.status(200).json(token);
      //
 };
 module.exports = { loginUsuario };
