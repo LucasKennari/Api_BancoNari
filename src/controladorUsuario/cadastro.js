@@ -28,8 +28,9 @@ const cadastro = async (req, res) => {
                email,
                senhaCriptografada
           );
+          console.log(perfil);
 
-          return res.status(201).json(perfil.id);
+          return res.status(201).json({ id: perfil.id });
      } catch (error) {
           console.log(error.message);
           return res
