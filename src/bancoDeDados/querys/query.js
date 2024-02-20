@@ -1,4 +1,4 @@
-const pool = require("../bancoDeDados/conexao");
+const pool = require("../conexao/conexao");
 
 async function verificarEmailExistente(email) {
      try {

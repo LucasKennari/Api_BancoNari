@@ -1,8 +1,5 @@
-const {
-     verificarEmailExistente,
-     cadastroEfetuado,
-     verificarLoginExistente,
-} = require("../bancoDeDados/query");
+
+const { verificarLoginExistente, verificarEmailExistente, cadastroEfetuado } = require("../bancoDeDados/querys/query");
 const senhaCripto = require("./senhaCript");
 
 const cadastro = async (req, res) => {

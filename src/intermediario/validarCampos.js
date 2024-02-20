@@ -1,6 +1,6 @@
-const { verificarEmailExistente } = require('../bancoDeDados/query')
+const { verificarEmailExistente } = require('../bancoDeDados/querys/query')
 
-const tamanhoDaSenha = 10
+const tamanhoDaSenha = 3
 
 async function validarCampos(req, res, next) {
     const { nome, email, senha } = req.body
