@@ -1,11 +1,14 @@
 const knex = require('../../conexao/conexao')
 
 const obterPerfil = async (login, email) => {
-          const perfil = 
-          await knex('usuarios')
-          .where({login})
+          const usuario = 
+          await knex('usuarios').select('*')
+          .where('login', login)
           .first()
-          return perfil
+         const senhaCriptografada = usuario.senha
+         const {senha: _,...perfil} = usuario
+        
+    return {perfil , senhaCriptografada}
 }
 
 module.exports = {
