@@ -3,11 +3,11 @@ const request = require("../jest.setup");
 // import describe from "jest";
 describe("Conta - Cadastro", () => {
      it("Cria conta", async () => {
-          const res1 = await request.post("/cadastro").send({
-               login: "teste",
-               nome: "teste",
-               email: "teste@teste.com",
-               senha: "teste12223456",
+          const res1 = await testServer.post("/cadastro").send({
+               login: "teste02001",
+               nome: "testJ2est",
+               email: "test020e@teste.com",
+               senha: "1234567890",
           });
           console.log(res1.body);
           expect(res1.status).toEqual(201);
@@ -15,14 +15,24 @@ describe("Conta - Cadastro", () => {
           expect(typeof res1.body).toBe("object");
      });
 
-     //      it("Tentar criar outra conta com o mesmo email", async () => {
-     //           const res1 = await request.post("/cadastro").send({
-     //                login: "teste0001",
-     //                nome: "testJest",
-     //                email: "test00e@teste.com",
-     //                senha: "teste123456",
-     //           });
-     //           expect(res1.status).toEqual(400);
-     //           expect(res1.body).toHaveProperty("mensagem");
-     //      });
+     it("NÃO criar outra conta com o mesmo login", async () => {
+          const res1 = await testServer.post("/cadastro").send({
+               login: "teste02001",
+               nome: "testJest",
+               email: "test020ew22@teste.com",
+               senha: "1234567890",
+          });
+          expect(res1.status).toEqual(400);
+          expect(res1.body).toHaveProperty("mensagem");
+     });
+     it("NÃO criar outra conta com o mesmo email", async () => {
+          const res1 = await testServer.post("/cadastro").send({
+               login: "teste00012",
+               nome: "testJest",
+               email: "test020e@teste.com",
+               senha: "1234567890",
+          });
+          expect(res1.status).toEqual(400);
+          expect(res1.body).toHaveProperty("mensagem");
+     });
 });
