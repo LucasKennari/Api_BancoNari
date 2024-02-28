@@ -1,11 +1,7 @@
-
-
-
 const perfilUsuario = async (req, res) => {
-    
-     
-     //      const decoded = jwt.verify(token, process.env.PRIVATEKEY);
-     //      console.log(decoded);
+     const { authorization } = req.headers;
+
+     return res.send("ok");
 };
 
 module.exports = { perfilUsuario };
