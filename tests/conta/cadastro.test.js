@@ -1,15 +1,19 @@
+const delESeed = require("../../reset");
+
+const testServer = require("../jest.setup");
 const request = require("../jest.setup");
 // import { expect, jest, test } from "@jest/globals";
 // import describe from "jest";
 describe("Conta - Cadastro", () => {
+     delESeed;
      it("Cria conta", async () => {
           const res1 = await testServer.post("/cadastro").send({
-               login: "teste02001",
+               login: "loginTeste",
                nome: "testJ2est",
-               email: "test020e@teste.com",
+               email: "emailTeste@teste.com",
                senha: "1234567890",
           });
-          console.log(res1.body);
+
           expect(res1.status).toEqual(201);
           expect(res1.body).toHaveProperty("id");
           expect(typeof res1.body).toBe("object");
@@ -17,9 +21,9 @@ describe("Conta - Cadastro", () => {
 
      it("NÃO criar outra conta com o mesmo login", async () => {
           const res1 = await testServer.post("/cadastro").send({
-               login: "teste02001",
+               login: "loginTeste",
                nome: "testJest",
-               email: "test020ew22@teste.com",
+               email: "emailTeste2@teste.com",
                senha: "1234567890",
           });
           expect(res1.status).toEqual(400);
@@ -27,9 +31,9 @@ describe("Conta - Cadastro", () => {
      });
      it("NÃO criar outra conta com o mesmo email", async () => {
           const res1 = await testServer.post("/cadastro").send({
-               login: "teste00012",
+               login: "loginTeste2",
                nome: "testJest",
-               email: "test020e@teste.com",
+               email: "emailTeste@teste.com",
                senha: "1234567890",
           });
           expect(res1.status).toEqual(400);

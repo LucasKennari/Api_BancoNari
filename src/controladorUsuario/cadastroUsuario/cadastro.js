@@ -27,7 +27,7 @@ const cadastro = async (req, res) => {
 
           const perfil = await cadastrarUsuario(login, nome, email, senha);
 
-          return res.status(201).json(perfil.id);
+          return res.status(201).json(perfil);
      } catch (error) {
           console.log(error.message);
           return res
